@@ -5,7 +5,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:quiz_app/components/NumPad.dart';
+import 'package:quiz_app/components/numpad.dart';
 import 'package:quiz_app/components/question.dart';
 import 'package:quiz_app/components/timer.dart';
 
@@ -30,6 +30,7 @@ class _HomeState extends State<Home> {
   int solution = 0;
   int timer = 20;
 
+//reset Game data
   void resetGame() {
     setState(() {
       question = "";
@@ -43,6 +44,7 @@ class _HomeState extends State<Home> {
     });
   }
 
+//retrive data and assign to local variables
   Future<void> getData() async {
     setState(() {
       question = "";
@@ -56,7 +58,7 @@ class _HomeState extends State<Home> {
         question = data["question"];
         solution = data["solution"];
       });
-      print(data);
+      // print(data);
     } catch (e) {
       showDialog(
           context: context,
@@ -82,6 +84,7 @@ class _HomeState extends State<Home> {
     }
   }
 
+//check answer with actual solution
   void checkAnswer(bool done) {
     if (done) {
       if (solution == answer) {
@@ -116,13 +119,13 @@ class _HomeState extends State<Home> {
       }
     }
   }
-
+// update ansewer variable with user entered value
   void updateAnswer(int number) {
     setState(() {
       answer = number;
     });
   }
-
+//update score value
   void updateScore() {
     getData();
     setState(() {
@@ -131,7 +134,7 @@ class _HomeState extends State<Home> {
       noOfQuestions++;
     });
   }
-
+//process of if asnwer is wrong
   void wrongAnswer() {
     getData();
     setState(() {
@@ -140,7 +143,7 @@ class _HomeState extends State<Home> {
       wrong++;
     });
   }
-
+// End game summery for user
   void endSummery() {
     showDialog(
         context: context,
@@ -168,13 +171,13 @@ class _HomeState extends State<Home> {
               ],
             ));
   }
-
+// timer logic
   void startTimer() {
     gametimer = Timer.periodic(const Duration(seconds: 1), (timer) {
       timerfunc();
     });
   }
-
+// all the game logic with the timer
   void timerfunc() {
     if (noOfQuestions >= 10 || wrong >= 3 || skipped >= 3) {
       highestscore < score ? highestscore = score : null;
