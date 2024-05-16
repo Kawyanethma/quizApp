@@ -76,9 +76,9 @@ lib
 ```
 ## Game Logic
 All the game logic in the `home.dart` file. There are several functions on the file. those are,
-  `getData()` - Retrive data and assign to local variables.
-  `checkAnswer(bool done)` - Check answer with actual solution.
-  `updateAnswer` - Update ansewer variable with user entered value.
-  `updateScore()` - Update score value if the answer is correct.
-  `wrongAnswer()` - Define process of if asnwer is wrong.
-  `endSummery()` -  Summery for user at the end of the game.
+  1. `getData()` - Retrive data and assign to local variables.
+  2. `checkAnswer(bool done)` - Check answer with actual solution.
+  3. `updateAnswer` - Update ansewer variable with user entered value.
+  4. `updateScore()` - Update score value if the answer is correct.
+  5. `wrongAnswer()` - Define process of if asnwer is wrong.
+  6. `endSummery()` -  Summery for user at the end of the game.
